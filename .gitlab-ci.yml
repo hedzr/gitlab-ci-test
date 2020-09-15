@@ -75,5 +75,8 @@ deploy:
     - |
       # ssh -o "StrictHostKeyChecking no" git@github.com
       cat ~/.ssh/config
+      echo "-------------"
+      env|sort
+      echo "-------------"
       git push all --all
       git push all --tags
