@@ -50,20 +50,20 @@ deploy:
       [ -d ~/.ssh ] || mkdir ~/.ssh
       echo $ROBOT_PRIVATE_KEY > ~/.ssh/id_rsa
     - |
-cat >~/.ssh/config <<-EOF
-Host github.com
-  StrictHostKeyChecking no
-  UserKnownHostsFile=/dev/null
+      cat >~/.ssh/config <<-EOF
+      Host github.com
+        StrictHostKeyChecking no
+        UserKnownHostsFile=/dev/null
 
-Host gitlab.com
-  StrictHostKeyChecking no
-  UserKnownHostsFile=/dev/null
+      Host gitlab.com
+        StrictHostKeyChecking no
+        UserKnownHostsFile=/dev/null
 
-Host gitee.com
-  StrictHostKeyChecking no
-  UserKnownHostsFile=/dev/null
+      Host gitee.com
+        StrictHostKeyChecking no
+        UserKnownHostsFile=/dev/null
 
-EOF
+      EOF
     - |
       # git remote add github github.com/$NS/$REPO
       # git remote add gitlab gitlab.com/$NS/$REPO
@@ -73,5 +73,6 @@ EOF
       git remote set-url --add --push all gitee.com/$NS/$REPO
     - |
       # ssh -o "StrictHostKeyChecking no" git@github.com
+      cat ~/.ssh/config
       git push all --all
       git push all --tags
