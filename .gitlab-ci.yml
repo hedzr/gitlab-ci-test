@@ -8,6 +8,11 @@ variables:
   REPO_NAME: 22os.com/$NS/$REPO
   APP_NAME:  $REPO
 
+job:
+  tags:
+    - docker
+    - 22os.com
+
 # The problem is that to be able to use go get, one needs to put
 # the repository in the $GOPATH. So for example if your gitlab domain
 # is gitlab.com, and that your repository is namespace/project, and
