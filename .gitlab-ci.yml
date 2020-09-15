@@ -34,7 +34,7 @@ format:
 compile:
   stage: build
   dependencies:
-    - test
+    - format
   script:
     - go build -race -ldflags "-extldflags '-static'" -o $CI_PROJECT_DIR/$APP_NAME
   artifacts:
@@ -44,7 +44,7 @@ compile:
 deploy:
   stage: deploy
   dependencies:
-    - build
+    - compile
   script:
     - |
       [ -d ~/.ssh ] || mkdir ~/.ssh
