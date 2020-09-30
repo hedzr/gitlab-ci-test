@@ -70,10 +70,10 @@ deploy:
       echo
       echo
       echo
-      git remote add github git@github.com:$NS/$REPO.git   | :
-      git remote add gitlab git@gitlab.com:$NS/$REPO.git   | :
-      git remote add gitee  git@gitee.com:$NS/$REPO.git    | :
-      git remote add 22os   git@22os.com:$NS22OS/$REPO.git |:
+      git remote add github git@github.com:$NS/$REPO.git   || :
+      git remote add gitlab git@gitlab.com:$NS/$REPO.git   || :
+      git remote add gitee  git@gitee.com:$NS/$REPO.git    || :
+      git remote add 22os   git@22os.com:$NS22OS/$REPO.git || :
       ### git remote add all git@github.com:$NS/$REPO.git || { echo "'all' exists"; git remote -v; echo; cat .git/config; }
       ### git remote set-url --delete --push all "git@github.com:$NS/$REPO" || :
       ### git remote set-url --delete --push all "git@gitlab.com:$NS/$REPO" || :
@@ -108,6 +108,7 @@ deploy:
       echo "-------------"
       #env|sort
       echo "-------------"
+      pwd
       git push github --all && git push github --tags
       git push gitlab --all && git push gitlab --tags
       git push gitee --all  && git push gitee --tags
