@@ -92,7 +92,7 @@ deploy:
       #git status
       echo "-------------"
       git fetch origin master
-      git fetch origin --all
+      for rr in $(git branch -r); do [[ $rr == origin/* ]] && git fetch origin ${rr//origin\//}; done
       git checkout master
       echo "-------------"
       git status
