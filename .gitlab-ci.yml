@@ -92,7 +92,10 @@ deploy:
       #git status
       echo "-------------"
       git fetch origin master
+      git fetch origin --all
       git checkout master
+      echo "-------------"
+      git status
       git config user.name $ROBOT_NAME
       git config user.email $ROBOT_MAIL
       echo "-------------"
