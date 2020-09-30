@@ -51,7 +51,6 @@ deploy:
     - |
       [ -d ~/.ssh ] || mkdir ~/.ssh
       mv $ROBOT_DEPLOY_FILE ~/.ssh/id_rsa && chmod 0400 ~/.ssh/id_rsa
-    - |
       cat >~/.ssh/config <<-EOF
       Host github.com
         StrictHostKeyChecking no
@@ -83,12 +82,12 @@ deploy:
       echo
       # ssh -o "StrictHostKeyChecking no" git@github.com
       #cat ~/.ssh/config
-      echo "-------------"
+      #echo "-------------"
       #env|sort
-      echo "-------------"
-      pwd
-      echo "-------------"
-      git status
+      #echo "-------------"
+      #pwd
+      #echo "-------------"
+      #git status
       echo "-------------"
       git fetch origin master
       git checkout master
