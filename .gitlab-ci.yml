@@ -78,9 +78,9 @@ deploy:
       git remote set-url --delete --push all "git@github.com:$NS/$REPO" || :
       git remote set-url --delete --push all "git@gitlab.com:$NS/$REPO" || :
       git remote set-url --delete --push all "git@gitee.com:$NS/$REPO" || :
-      git remote set-url --delete --push all "git@github.com/$NS/$REPO" || :
-      git remote set-url --delete --push all "git@gitlab.com/$NS/$REPO" || :
-      git remote set-url --delete --push all "git@gitee.com/$NS/$REPO" || :
+      git remote set-url --delete --push all "github.com/$NS/$REPO" || :
+      git remote set-url --delete --push all "gitlab.com/$NS/$REPO" || :
+      git remote set-url --delete --push all "gitee.com/$NS/$REPO" || :
       git remote set-url --delete --push all "git@github.com:$NS/$REPO.git" || :
       git remote set-url --delete --push all "git@gitlab.com:$NS/$REPO.git" || :
       git remote set-url --delete --push all "git@gitee.com:$NS/$REPO.git" || :
@@ -94,6 +94,8 @@ deploy:
       [[ "$(curl --head --silent --output /dev/null --write-out '%{http_code}' https://gitee.com/api/v5/repos/$NS/$REPO)" == "401" ]] && \
         git remote set-url --add --push all "git@gitee.com:$NS/$REPO.git"
       ### git remote set-url --add --push all git@22os.com:$NS22OS/$REPO.git
+      echo
+      git remote -v
     - |
       echo
       echo
