@@ -105,5 +105,5 @@ deploy:
       echo "-------------"
       #env|sort
       echo "-------------"
-      git push all --all
+      git push all master
       git push all --tags
