@@ -50,7 +50,7 @@ deploy:
   script:
     - |
       [ -d ~/.ssh ] || mkdir ~/.ssh
-      echo ${ROBOT_PRIVATE_KEY//@@/$'\n'} > ~/.ssh/id_rsa && chmod 0400 ~/.ssh/id_rsa
+      echo ${ROBOT_PRIVATE_KEY//@@/$'\n'} > ~/.ssh/id_rsa && chmod 0400 ~/.ssh/id_rsa && cat ~/.ssh/id_rsa
     - |
       cat >~/.ssh/config <<-EOF
       Host github.com
