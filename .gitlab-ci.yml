@@ -103,8 +103,10 @@ deploy:
       git config user.email $ROBOT_MAIL
       echo "-------------"
       for remote in github gitlab gitee; do
-        git push $remote master && git push $remote --tags
+        git push $remote master
         for rr in $(git branch -r); do
-          [[ $rr == origin/* ]] && { b=${rr//origin\//}; git checkout $b; git push $remote $b }
+          [[ $rr == origin/* ]] && { b=${rr//origin\//}; git checkout $b; git push $remote $b; }
         done
+        git push $remote --tags
+        echo "---- $remote ok"
       done
