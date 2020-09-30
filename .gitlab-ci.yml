@@ -74,31 +74,9 @@ deploy:
       git remote add gitlab git@gitlab.com:$NS/$REPO.git   || :
       git remote add gitee  git@gitee.com:$NS/$REPO.git    || :
       git remote add 22os   git@22os.com:$NS22OS/$REPO.git || :
-      ### git remote add all git@github.com:$NS/$REPO.git || { echo "'all' exists"; git remote -v; echo; cat .git/config; }
-      ### git remote set-url --delete --push all "git@github.com:$NS/$REPO" || :
-      ### git remote set-url --delete --push all "git@gitlab.com:$NS/$REPO" || :
-      ### git remote set-url --delete --push all "git@gitee.com:$NS/$REPO" || :
-      ### git remote set-url --delete --push all "github.com/$NS/$REPO" || :
-      ### git remote set-url --delete --push all "gitlab.com/$NS/$REPO" || :
-      ### git remote set-url --delete --push all "gitee.com/$NS/$REPO" || :
-      ### git remote set-url --delete --push all "git@github.com:$NS/$REPO.git" || :
-      ### git remote set-url --delete --push all "git@gitlab.com:$NS/$REPO.git" || :
-      ### git remote set-url --delete --push all "git@gitee.com:$NS/$REPO.git" || :
-      ### # https://docs.gitlab.com/ee/api/projects.html#get-single-project
-      ### [[ "$(curl --head --silent --output /dev/null --write-out '%{http_code}' -H "Accept: application/vnd.github.v3+json" https://github.com/repos/$NS/$REPO)" == "200" ]] && \
-      ###   { git remote set-url --add --push all "git@github.com:$NS/$REPO.git";
-      ### git remote add github "git@github.com:$NS/$REPO.git" || :; }
-      ### # https://docs.github.com/en/free-pro-team@latest/rest/reference/repos#get-a-repository
-      ### [[ "$(curl --head --silent --output /dev/null --write-out '%{http_code}' https://gitlab.com/api/v4/projects/$NS%2F$REPO)" == "200" ]] && \
-      ###   { git remote set-url --add --push all "git@gitlab.com:$NS/$REPO.git";
-      ### git remote add gitlab "git@gitlab.com:$NS/$REPO.git" || :; }
-      ### # https://gitee.com/api/v5/swagger#/getV5ReposOwnerRepoBranchesBranch
-      ### [[ "$(curl --head --silent --output /dev/null --write-out '%{http_code}' https://gitee.com/api/v5/repos/$NS/$REPO)" == "401" ]] && \
-      ###   { git remote set-url --add --push all "git@gitee.com:$NS/$REPO.git";
-      ### git remote add gitee "git@gitee.com:$NS/$REPO.git" || :; }
-      ### ### git remote set-url --add --push all git@22os.com:$NS22OS/$REPO.git
-      ### echo
       git remote -v
+      echo "-------------"
+      cat .git/config
     - |
       echo
       echo
@@ -109,6 +87,6 @@ deploy:
       #env|sort
       echo "-------------"
       pwd
-      git push github --all && git push github --tags
-      git push gitlab --all && git push gitlab --tags
-      git push gitee --all  && git push gitee --tags
+      git push github master:master && git push github --all && git push github --tags
+      git push gitlab master:master && git push gitlab --all && git push gitlab --tags
+      git push gitee  master:master && git push gitee  --all && git push gitee  --tags
