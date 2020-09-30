@@ -94,6 +94,7 @@ deploy:
       git fetch origin master
       for rr in $(git branch -r); do [[ $rr == origin/* ]] && git fetch origin ${rr//origin\//}; done
       git checkout master
+      git pull
       echo "-------------"
       git status
       git config user.name $ROBOT_NAME
