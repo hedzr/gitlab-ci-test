@@ -92,7 +92,9 @@ deploy:
       #git status
       echo "-------------"
       git fetch origin master
-      for rr in $(git branch -r); do [[ $rr == origin/* ]] && { b=${rr//origin\//}; git checkout $b; git pull origin $b; }; done
+      for rr in $(git branch -r); do
+        [[ $rr == origin/* ]] && { b=${rr//origin\//}; git checkout $b; git pull origin $b; }
+      done
       git checkout master
       git pull origin master
       echo "-------------"
@@ -101,6 +103,8 @@ deploy:
       git config user.email $ROBOT_MAIL
       echo "-------------"
       for remote in github gitlab gitee; do
-        git push github master && git push github --tags
-        for rr in $(git branch -r); do [[ $rr == origin/* ]] && { b=${rr//origin\//}; git checkout $b; git push $remote $b }; done
+        git push $remote master && git push $remote --tags
+        for rr in $(git branch -r); do
+          [[ $rr == origin/* ]] && { b=${rr//origin\//}; git checkout $b; git push $remote $b }
+        done
       done
