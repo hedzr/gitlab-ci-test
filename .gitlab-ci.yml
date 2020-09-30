@@ -90,7 +90,7 @@ deploy:
       echo "-------------"
       git status
       echo "-------------"
-      git fetch master
+      git fetch origin master
       echo "-------------"
       git push github master:master && git push github --all && git push github --tags
       git push gitlab master:master && git push gitlab --all && git push gitlab --tags
